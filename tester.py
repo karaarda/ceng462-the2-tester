@@ -72,6 +72,21 @@ SimpleSet = ("Simple", [
         "R": ('yes', ['a(A)$!a(y)+b(y)$b(A)', 'b(A)$!b(x)+c(x)$c(A)', 'c(A)$!c(A)$empty'])
     },
     {
+        "KB": ["a(x)+b(y)+c(B)", "a(X)+!b(y)", "d(B)+!c(x)", "!a(X)"],
+        "G": ["!d(x)"],
+        "R": ('yes', ['a(x)+b(y)+c(B)$a(X)+!b(y)$a(x)+c(B)', 'a(x)+c(B)$d(B)+!c(x)$a(B)+d(B)', 'a(B)+d(B)$!d(x)$a(B)', 'a(x)+c(B)$!a(X)$c(B)', 'c(B)$d(B)+!c(x)$d(B)', 'd(B)$!d(x)$empty'])
+    },
+    {
+        "KB": ["a(A)", "!a(y)+b(y)", "!b(x)+c(x)"],
+        "G": ["!c(A)"],
+        "R": ('yes', ['a(A)$!a(y)+b(y)$b(A)', 'b(A)$!b(x)+c(x)$c(A)', 'c(A)$!c(A)$empty'])
+    },
+    {
+        "KB": ["f(x)+g(y)", "!f(x)+g(y)", "f(x)+!g(y)", "!f(x)+!g(y)"],
+        "G": [],
+        "R": ('no', ['f(x)+g(y)$!f(x)+g(y)$g(y)', 'g(y)$f(x)+!g(y)$f(x)', 'f(x)$!f(x)+!g(y)$!g(y)', '!g(y)$!f(x)+g(y)$!f(x)', '!f(x)+g(y)$!f(x)+!g(y)$!f(x)', '!f(x)$f(x)+!g(y)$!g(y)', 'f(x)+!g(y)$!f(x)+!g(y)$!g(y)'])
+    },
+    {
         "KB": ["a(y)+b(A)", "!a(x)+!b(A)", "a(x)+c(Y)", "!a(x)+b(A)"],
         "G": ["!b(A)"],
         "R": ('yes', ['a(y)+b(A)$!a(x)+b(A)$b(A)', 'b(A)$!a(x)+!b(A)$!a(x)', '!a(x)$a(x)+c(Y)$c(Y)',
@@ -124,9 +139,14 @@ UnificationSet = ("Unification", [
         "R": ('no', ['f(u)+!g(u)$f(A)+g(B)$f(B)+f(A)'])
     },
     {
+        "KB": ["f(u)+g(u)", "!f(x)+g(y)"],
+        "G": ["!g(y)"],
+        "R": ('yes', ['f(u)+g(u)$!f(x)+g(y)$g(x)', 'g(x)$!g(y)$empty'])
+    },
+    {
         "KB": ["f(u)+g(u)", "!f(x)+g(y)+!f(y)"],
         "G": ["!g(y)"],
-        "R": ('yes', ['f(u)+g(u)$!f(x)+g(y)+!f(y)$g(x)+!f(y)', 'g(x)+!f(y)$f(u)+g(u)$g(x)', 'g(x)$!g(y)$empty'])
+        "R": ('no', ['f(u)+g(u)$!g(y)$f(y)', '!f(x)+g(y)+!f(y)$!g(y)$!f(x)'])
     },
     {
         "KB": ["f(u)+g(u)", "!f(A)+g(B)+!f(B)"],
