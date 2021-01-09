@@ -106,7 +106,15 @@ SimpleSet = ("Simple", [
                      'a(y)+b(z)$!c(x)+a(y)+!b(y)$a(y)+!c(x)', 'a(y)+!c(x)$c(x)+a(y)+b(z)$a(y)+b(z)',
                      'a(y)+!c(x)$!b(A)+!a(B)$!c(x)+!b(A)', '!c(x)+!b(A)$a(x)+b(y)$!c(x)+a(x)',
                      '!c(x)+a(x)$c(x)+a(y)+b(z)$a(x)+b(z)', '!c(x)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)',
-                     '!c(B)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)', '!c(x)+a(y)+!b(y)$!b(A)+!a(B)$!c(x)+!b(B)+!b(A)'])
+                     '!c(B)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)', '!c(x)+a(y)+!b(y)$a(x)+b(y)$!c(x)+a(y)',
+                     '!c(x)+a(y)$c(x)+a(y)+b(z)$a(y)+b(z)', '!c(x)+a(y)$!b(A)+!a(B)$!c(x)+!b(A)',
+                     '!c(x)+a(y)+!b(y)$!b(A)+!a(B)$!c(x)+!b(B)+!b(A)', '!c(x)+!b(B)+!b(A)$a(x)+b(y)$!c(x)+!b(A)+a(x)',
+                     '!c(x)+!b(A)+a(x)$a(x)+b(y)$!c(x)+a(x)', '!c(x)+!b(A)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)',
+                     '!c(x)+!b(B)+!b(A)$a(x)+b(y)$!c(x)+!b(B)+a(x)', '!c(x)+!b(B)+a(x)$a(x)+b(y)$!c(x)+a(x)',
+                     '!c(x)+!b(B)+a(x)$!b(A)+!a(B)$!c(B)+!b(B)+!b(A)', '!c(B)+!b(B)+!b(A)$a(x)+b(y)$!c(B)+!b(A)+a(x)',
+                     '!c(B)+!b(A)+a(x)$a(x)+b(y)$!c(B)+a(x)', '!c(B)+!b(A)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)',
+                     '!c(B)+!b(B)+!b(A)$a(x)+b(y)$!c(B)+!b(B)+a(x)', '!c(B)+!b(B)+a(x)$a(x)+b(y)$!c(B)+a(x)',
+                     '!c(B)+!b(B)+a(x)$!b(A)+!a(B)$!c(B)+!b(B)+!b(A)'])
     },
     {
         "KB": ["human(A)", "!human(A)+!human(b)+likes(A,b)", "!likes(a,B)"],
@@ -143,12 +151,13 @@ UnificationSet = ("Unification", [
         "KB": ["f(u)+!g(u)", "f(A)+g(B)"],
         "G": ["!f(A)"],
         "R": ('no', ['f(u)+!g(u)$f(A)+g(B)$f(B)+f(A)', 'f(B)+f(A)$!f(A)$f(B)', 'f(u)+!g(u)$!f(A)$!g(A)',
-                     'f(A)+g(B)$!f(A)$g(B)'])
+                     'f(A)+g(B)$f(u)+!g(u)$f(A)+f(B)', 'f(A)+f(B)$!f(A)$f(B)', 'f(A)+g(B)$!f(A)$g(B)',
+                     'g(B)$f(u)+!g(u)$f(B)'])
     },
     {
         "KB": ["f(u)+!g(u)", "f(A)+g(B)"],
         "G": ["!d(A)"],
-        "R": ('no', ['f(u)+!g(u)$f(A)+g(B)$f(B)+f(A)'])
+        "R": ('no', ['f(u)+!g(u)$f(A)+g(B)$f(B)+f(A)', 'f(A)+g(B)$f(u)+!g(u)$f(A)+f(B)'])
     },
     {
         "KB": ["f(u)+g(u)", "!f(x)+g(y)"],
@@ -158,7 +167,8 @@ UnificationSet = ("Unification", [
     {
         "KB": ["f(u)+g(u)", "!f(x)+g(y)+!f(y)"],
         "G": ["!g(y)"],
-        "R": ('no', ['f(u)+g(u)$!g(y)$f(y)', '!f(x)+g(y)+!f(y)$!g(y)$!f(x)'])
+        "R": (
+        'yes', ['f(u)+g(u)$!g(y)$f(y)', '!f(x)+g(y)+!f(y)$!g(y)$!f(x)', '!f(x)$f(u)+g(u)$g(u)', 'g(u)$!g(y)$empty'])
     },
     {
         "KB": ["f(u)+g(u)", "!f(A)+g(B)+!f(B)"],
@@ -168,7 +178,10 @@ UnificationSet = ("Unification", [
                      'f(u)+g(u)$!f(A)+g(B)+!f(B)$g(B)+!f(A)', 'g(B)+!f(A)$f(u)+g(u)$g(B)+g(A)', 'g(B)+g(A)$!g(B)$g(A)',
                      'g(B)+!f(A)$!g(B)$!f(A)', '!f(A)$f(u)+g(u)$g(A)', 'f(u)+g(u)$!g(B)$f(B)',
                      'f(B)$!f(A)+g(B)+!f(B)$!f(A)+g(B)', '!f(A)+g(B)$f(u)+g(u)$g(B)+g(A)', '!f(A)+g(B)$!g(B)$!f(A)',
-                     '!f(A)+g(B)+!f(B)$!g(B)$!f(A)+!f(B)'])
+                     '!f(A)+g(B)+!f(B)$f(u)+g(u)$g(B)+!f(B)+g(A)', 'g(B)+!f(B)+g(A)$f(u)+g(u)$g(B)+g(A)',
+                     'g(B)+!f(B)+g(A)$!g(B)$!f(B)+g(A)', '!f(B)+g(A)$f(u)+g(u)$g(A)+g(B)',
+                     '!f(A)+g(B)+!f(B)$f(u)+g(u)$!f(A)+g(B)', '!f(A)+g(B)+!f(B)$!g(B)$!f(A)+!f(B)',
+                     '!f(A)+!f(B)$f(u)+g(u)$!f(B)+g(A)', '!f(A)+!f(B)$f(u)+g(u)$!f(A)+g(B)'])
     },
 ])
 
@@ -207,20 +220,17 @@ ErroneousInputSet = ("Erroneous Input", [
     {
         "KB": ["p(A,f(t))", "q(z)+!p(z,f(B))", "!q(y)+r(y)"],
         "G": ["!!r(A)"],
-        "R": (
-            'no',
-            ['p(A,f(t))$q(z)+!p(z,f(B))$q(A)', 'q(A)$!q(y)+r(y)$r(A)', 'q(z)+!p(z,f(B))$!q(y)+r(y)$!p(y,f(B))+r(y)']
-        )
+        "R": ('no', ['p(A,f(t))$q(z)+!p(z,f(B))$q(A)', 'q(A)$!q(y)+r(y)$r(A)', 'q(z)+!p(z,f(B))$!q(y)+r(y)$!p(y,f(B))+r(y)', '!p(y,f(B))+r(y)$p(A,f(t))$r(A)', '!q(y)+r(y)$q(z)+!p(z,f(B))$r(z)+!p(z,f(B))', 'r(z)+!p(z,f(B))$p(A,f(t))$r(A)'])
     },
     {
         "KB": ["p(A,,f(t))", "q(z)+!p(z,f(B))", "!q(y)+r(y)"],
         "G": ["!!r(A)"],
-        "R": ('no', ['q(z)+!p(z,f(B))$!q(y)+r(y)$!p(y,f(B))+r(y)'])
+        "R": ('no', ['q(z)+!p(z,f(B))$!q(y)+r(y)$!p(y,f(B))+r(y)', '!q(y)+r(y)$q(z)+!p(z,f(B))$r(z)+!p(z,f(B))'])
     },
     {
         "KB": ["p(A,,f(t))", "q(z)+!p(z,f(B)))", "!q(y)+r(y)"],
         "G": ["!!r(A)"],
-        "R": ('no', ['q(z)+!p(z,f(B))$!q(y)+r(y)$!p(y,f(B))+r(y)'])
+        "R": ('no', ['q(z)+!p(z,f(B))$!q(y)+r(y)$!p(y,f(B))+r(y)', '!q(y)+r(y)$q(z)+!p(z,f(B))$r(z)+!p(z,f(B))'])
     },
     {
         "KB": ["p(A,f(t))", "q(z)+!p(z,f(B))", "!q(y)++r(y)"],
