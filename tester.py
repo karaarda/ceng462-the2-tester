@@ -100,9 +100,13 @@ SimpleSet = ("Simple", [
     {
         "KB": ["a(x)+b(y)", "c(x)+a(y)+b(z)", "!c(x)+a(y)+!b(y)"],
         "G": ["!b(A)+!a(B)"],
-        "R": ('no', ['a(x)+b(y)$!c(x)+a(y)+!b(y)$a(x)+!c(x)', 'a(x)+!c(x)$!b(A)+!a(B)$!c(B)+!b(A)',
-                     '!c(B)+!b(A)$a(x)+b(y)$!c(B)+a(x)', '!c(B)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)',
-                     '!c(x)+a(y)+!b(y)$!b(A)+!a(B)$!c(x)+!b(B)+!b(A)'])
+        "R": ('no', ['a(x)+b(y)$!c(x)+a(y)+!b(y)$a(x)+!c(x)', 'a(x)+!c(x)$c(x)+a(y)+b(z)$a(x)+b(z)',
+                     'a(x)+b(z)$!c(x)+a(y)+!b(y)$a(x)+!c(x)', 'a(x)+!c(x)$!b(A)+!a(B)$!c(B)+!b(A)',
+                     '!c(B)+!b(A)$a(x)+b(y)$!c(B)+a(x)', '!c(B)+a(x)$c(x)+a(y)+b(z)$a(y)+b(z)',
+                     'a(y)+b(z)$!c(x)+a(y)+!b(y)$a(y)+!c(x)', 'a(y)+!c(x)$c(x)+a(y)+b(z)$a(y)+b(z)',
+                     'a(y)+!c(x)$!b(A)+!a(B)$!c(x)+!b(A)', '!c(x)+!b(A)$a(x)+b(y)$!c(x)+a(x)',
+                     '!c(x)+a(x)$c(x)+a(y)+b(z)$a(x)+b(z)', '!c(x)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)',
+                     '!c(B)+a(x)$!b(A)+!a(B)$!c(B)+!b(A)', '!c(x)+a(y)+!b(y)$!b(A)+!a(B)$!c(x)+!b(B)+!b(A)'])
     },
     {
         "KB": ["human(A)", "!human(A)+!human(b)+likes(A,b)", "!likes(a,B)"],
